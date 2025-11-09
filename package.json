@@ -8,12 +8,8 @@
     "build": "vite build --emptyOutDir",
     "lint": "eslint *.js src/**/*.js",
     "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
-<<<<<<< HEAD
-    "test": "jest"
-=======
     "test": "jest",
     "preview": "vite preview"
->>>>>>> ced6c0f (Complete individual work submission - all modifications from personal repository)
   },
   "author": "Shane Thompson",
   "license": "ISC",
@@ -37,11 +33,4 @@
     "last 3 ios_saf versions",
     "last 3 safari versions"
   ]
-<<<<<<< HEAD
 }
-=======
-  
-}
-
-
->>>>>>> ced6c0f (Complete individual work submission - all modifications from personal repository)
