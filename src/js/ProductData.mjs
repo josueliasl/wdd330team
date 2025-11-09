@@ -20,8 +20,4 @@ export default class ProductData {
     const products = await this.getData();
     return products.find((item) => item.Id === id);
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ced6c0f (Complete individual work submission - all modifications from personal repository)

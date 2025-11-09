@@ -21,8 +21,6 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-<<<<<<< HEAD
-=======
 
 // get the product id from the query string
 export function getParam(param) {
@@ -49,4 +47,3 @@ export async function getJSON(url) {
     throw new Error('Bad Response from' + url);
   }
 }
->>>>>>> ced6c0f (Complete individual work submission - all modifications from personal repository)
