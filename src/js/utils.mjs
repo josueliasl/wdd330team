@@ -23,30 +23,30 @@ export function setClick(selector, callback) {
 }
 
 export function alertMessage(message, scroll = true) {
-    // create element to hold the alert
-    const alert = document.createElement('div');
-    // add a class to style the alert
-    alert.classList.add('alert');
-    // set the contents. You should have a message and an X or something the user can click on to dismiss
-    alert.innerHTML = `
+  // create element to hold the alert
+  const alert = document.createElement('div');
+  // add a class to style the alert
+  alert.classList.add('alert');
+  // set the contents. You should have a message and an X or something the user can click on to dismiss
+  alert.innerHTML = `
         <p>${message}</p>
         <span class="close-btn">&times;</span>
     `;
 
-    // add a listener to the alert to see if they clicked on the X
-    alert.addEventListener('click', function(e) {
-        if(e.target.classList.contains('close-btn')) {
-            const main = document.querySelector('main');
-            main.removeChild(this);
-        }
-    });
-
-    // add the alert to the top of main
-    const main = document.querySelector('main');
-    main.prepend(alert);
-
-    // make sure they see the alert by scrolling to the top of the window
-    if(scroll) {
-        window.scrollTo(0,0);
+  // add a listener to the alert to see if they clicked on the X
+  alert.addEventListener('click', function (e) {
+    if (e.target.classList.contains('close-btn')) {
+      const main = document.querySelector('main');
+      main.removeChild(this);
     }
+  });
+
+  // add the alert to the top of main
+  const main = document.querySelector('main');
+  main.prepend(alert);
+
+  // make sure they see the alert by scrolling to the top of the window
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
 }
