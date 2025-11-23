@@ -24,7 +24,7 @@ function cartItemTemplate(item) {
   const quantity = item.quantity || 1;
   const price = item.FinalPrice || item.SuggestedRetailPrice;
   const totalPrice = (price * quantity).toFixed(2);
-  
+
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -63,7 +63,7 @@ function cartfinalItemTotalCost(cartItems) {
     let cost = parseFloat(item.FinalPrice);
     const quantity = item.quantity || 1;
     const itemTotal = cost * quantity;
-    const tax = itemTotal * 0.16; 
+    const tax = itemTotal * 0.16;
     total = total + tax + itemTotal;
   });
 
