@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD330</title>
+    <meta name="description" content="WDD 330 Final Project - Josue Elias Leyva Gonzalez">
+    <meta name="author" content="Josue Elias Leyva Gonzalez">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles_query.css">
+    <script type="module" src="js/app.mjs" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img src="images/icon.jpg" alt="BDFR Logo" id="logo">
+        <div id="header">
+            <h1>BDFR</h1>
+            <h2> MXN currency exchange to USD</h2>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="rate-display">
+            <div class="currency-pair">
+                <span class="currency_usd">USD</span>
+                <span class="arrow">→</span>
+                <span class="currency_mxn">MXN</span>
+            </div>
+            <div class="current-rate">
+                <span id="exchange-rate">Loading...</span>
+            </div>
+        </section>
+        <section class="calculator">
+            <h3>How much will you send? </h3>
+            <div class="input-group">
+                <span class="currency-symbol">$</span>
+                <input type="number" id="usd-amount" placeholder="0.00" min="0" step="0.01">
+                <span class="currency-code">USD</span>
+            </div>
+        </section>
+        <section class="result">
+            <p>That is = <span id="mxn-result">0.00</span> MXN</p>
+            <p>Today at <span id="mexico-time">Loading...</span> hrs</p>
+        </section>
+
+        <section class="chart">
+            <h3>Last week</h3>
+            <div class="chart-days">
+                <span>M </span><span>  Tu  </span><span>  W  </span><span>  Th  </span><span>  F  </span><span>  Sa  </span><span>  Su  </span>
+            </div>
+
+            <div class="chart-container">
+                <!-- Chart will be rendered here -->
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <h3>Contact us</h3>
+        <p>(+52) 2215185923</p>
+    </footer>
+
+
+</body>
+
+</html>

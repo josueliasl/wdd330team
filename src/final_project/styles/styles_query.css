@@ -1,0 +1,19 @@
+@media (max-width: 600px) {
+    h2{
+        font-size: medium;
+        text-align: center;
+    }
+    main{
+        margin:0.5rem;
+    }
+    section{
+        padding: 15px;
+        margin-bottom: 1rem;
+    }
+    .chart-days span{
+        font-size: 0.9em;
+    }
+    #usd-amount{
+        width: 70%;
+    }
+}

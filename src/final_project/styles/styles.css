@@ -1,0 +1,136 @@
+:root {
+    --primary-color: #4c6faf;
+    --secondary-color: #ffffff;
+    --font-family: 'arial', 'Roboto', sans-serif;
+    --accent-color: #2E8B57;
+    --font-family: var(--font-family);
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+}
+
+header img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+}
+
+h1,
+h2 {
+    margin: 10px;
+}
+
+main {
+    margin: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.rate-display {
+    text-align: center;
+    background: var(--accent-color);
+    color: white;
+    font-variant: var(--font-family);
+}
+
+.currency-pair {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.currency-rate {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.claculator.h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#usd-amount {
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+}
+.currency-symbol, .currency-code{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.result{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.result p{
+    margin: 12px 0;
+}
+#mxn-result{
+    font-weight: bold;
+}
+
+.chart h3{
+    text-align: center;
+    margin-top: 0;
+    color: var(--primary-color)}
+
+.chart-days{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+.chart-container{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}
