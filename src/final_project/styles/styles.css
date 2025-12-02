@@ -150,7 +150,7 @@ footer {
     border-radius: 6px;
 }
 .chart{
-    height: 100%;
+    margin-bottom: 5rem;
 }
 .chart-container {
     height: 450px;
