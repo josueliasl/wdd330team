@@ -104,10 +104,9 @@ async function getHistoricalData() {
             return generateRealisticHistory(currentRate);
         }
 
-        // Extract rates from history
+       
         const rates = history.map(entry => entry.rate);
 
-        // If we have less than 2 data points, generate more
         if (rates.length < 2) {
             const currentRate = rates[0] || parseFloat(document.getElementById('exchange-rate').textContent) || 17.50;
             return generateRealisticHistory(currentRate);
@@ -125,7 +124,7 @@ async function getHistoricalData() {
 function generateRealisticHistory(currentRate) {
     const rates = [];
 
-    // Always generate 7 data points (one week)
+    
     for (let i = 6; i >= 0; i--) {
         const variation = (Math.random() * 0.5) - 0.25;
         rates.push(parseFloat((currentRate + variation).toFixed(2)));
