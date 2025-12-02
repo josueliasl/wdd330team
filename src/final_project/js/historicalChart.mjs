@@ -1,10 +1,15 @@
-export function drawSimpleChart(weeklyRates, container){
+export function drawSimpleChart(weeklyRates, container) {
     
     container.innerHTML = '';
 
-    if(!weeklyRates || weeklyRates.length === 0){
+    if (!weeklyRates || weeklyRates.length === 0) {
         container.innerHTML = '<p>No historical data available</p>';
         return;
+    }
+
+    
+    if (weeklyRates.length === 1) {
+        weeklyRates = [weeklyRates[0], weeklyRates[0]];
     }
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -18,17 +23,17 @@ export function drawSimpleChart(weeklyRates, container){
 
     const minRate = Math.min(...weeklyRates);
     const maxRate = Math.max(...weeklyRates);
-    const rateRange = maxRate - minRate;
+    const rateRange = maxRate - minRate || 1; 
 
     let pathData = '';
 
     weeklyRates.forEach((rate, index) => {
-        const x = padding + (index * (chartWidth / (weeklyRates.length - 1)));
+        const x = padding + (index * (chartWidth / Math.max(1, weeklyRates.length - 1)));
         const y = padding + chartHeight - ((rate - minRate) / rateRange * chartHeight);
 
-        if(index === 0){
+        if (index === 0) {
             pathData += `M ${x} ${y} `;
-        } else{
+        } else {
             pathData += `L ${x} ${y} `;
         }
     });
@@ -43,8 +48,8 @@ export function drawSimpleChart(weeklyRates, container){
     svg.appendChild(path);
 
     weeklyRates.forEach((rate, index) => {
-        const x = padding+ (index * (chartWidth / (weeklyRates.length - 1)));
-        const y= padding + chartHeight - ((rate - minRate) / rateRange * chartHeight);
+        const x = padding + (index * (chartWidth / Math.max(1, weeklyRates.length - 1)));
+        const y = padding + chartHeight - ((rate - minRate) / rateRange * chartHeight);
 
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circle.setAttribute('cx', x);
@@ -57,5 +62,4 @@ export function drawSimpleChart(weeklyRates, container){
     });
 
     container.appendChild(svg);
-
 }

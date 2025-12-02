@@ -19,7 +19,7 @@ async function updateExchangeRate() {
     const rate = await getExchangeRate();
     if (rate) {
         document.getElementById('exchange-rate').textContent = rate.toFixed(2);
-       
+
         storeDailyRate(rate);
         updateConversion();
 
@@ -65,69 +65,83 @@ function showError(message) {
     }, 5000)
 }
 
-function storeDailyRate(rate){
-    try{
+function storeDailyRate(rate) {
+    try {
         const today = new Date().toDateString();
         const history = getStoredHistory();
 
         const todayEntry = history.find(entry => entry.date === today);
-        if(!todayEntry){
-            history.push({date: today, rate: rate});
+        if (!todayEntry) {
+            history.push({ date: today, rate: rate });
 
-            if(history.length > 7){
+            if (history.length > 7) {
                 history.shift();
             }
             localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
         }
 
-        }catch (error){
-            console.error('Error storing daily rate:', error);
-        }
+    } catch (error) {
+        console.error('Error storing daily rate:', error);
     }
+}
 
-function getStoredHistory(){
-    try{
+function getStoredHistory() {
+    try {
         const stored = localStorage.getItem(STORAGE_KEY);
         return stored ? JSON.parse(stored) : [];
-    } catch (error){
+    } catch (error) {
         console.error('Error retrieving stored history:', error);
         return [];
     }
 }
 
-
-
-async function getHistoricalData(){
+async function getHistoricalData() {
     try {
-        const history =  getStoredHistory();
+        const history = getStoredHistory();
 
-        if(history.length === 0){
+        if (history.length === 0) {
             const currentRate = parseFloat(document.getElementById('exchange-rate').textContent) || 17.50;
-            return generateRealisticHistory(currentRate);}
+            return generateRealisticHistory(currentRate);
+        }
 
-            return history.map(entry => entry.rate);
-        
-   }catch (error) { 
-    console.error('Error fetching historical data:', error);
-    const currentRate = parseFloat(document.getElementById('exchange-rate').textContent) || 17.50;
-   return generateRealisticHistory(currentRate);
-}
+        // Extract rates from history
+        const rates = history.map(entry => entry.rate);
+
+        // If we have less than 2 data points, generate more
+        if (rates.length < 2) {
+            const currentRate = rates[0] || parseFloat(document.getElementById('exchange-rate').textContent) || 17.50;
+            return generateRealisticHistory(currentRate);
+        }
+
+        return rates;
+
+    } catch (error) {
+        console.error('Error fetching historical data:', error);
+        const currentRate = parseFloat(document.getElementById('exchange-rate').textContent) || 17.50;
+        return generateRealisticHistory(currentRate);
+    }
 }
 
-function generateRealisticHistory(currentRate){
+function generateRealisticHistory(currentRate) {
     const rates = [];
-    for (let i = 6; i >= 0; i--){
+
+    // Always generate 7 data points (one week)
+    for (let i = 6; i >= 0; i--) {
         const variation = (Math.random() * 0.5) - 0.25;
         rates.push(parseFloat((currentRate + variation).toFixed(2)));
     }
-    return rates.reverse();
+    return rates;
 }
 
 async function updateHistoricalChart() {
     const weeklyRates = await getHistoricalData();
+    console.log('Chart data:', weeklyRates); // Debug line
+
     const chartContainer = document.querySelector('.chart-container');
-    if (chartContainer){
+    if (chartContainer && weeklyRates && weeklyRates.length > 0) {
         drawSimpleChart(weeklyRates, chartContainer);
+    } else if (chartContainer) {
+        chartContainer.innerHTML = '<p>No historical data available</p>';
     }
 }
 
@@ -137,19 +151,20 @@ setInterval(async () => {
     await updateHistoricalChart();
 }, 60000);
 
-async function multipleCurrencies(){
-    try{
+async function multipleCurrencies() {
+    try {
         const currencyList = await getCurrencyList();
         console.log('Processing multiple currencies:', currencyList);
 
-        if(currencyList.length > 0){
+        if (currencyList.length > 0) {
             console.log('Currency properties:', Object.keys(currencyList[0]));
-         }else{
+        } else {
             console.log('No currencies found in the list.');
-         }
-        
-        console.log('Total number of currencies:', currencyList.length);}
-        catch (error){
-            console.error('Error processing multiple currencies:', error);
+        }
+
+        console.log('Total number of currencies:', currencyList.length);
+    }
+    catch (error) {
+        console.error('Error processing multiple currencies:', error);
     }
 }
