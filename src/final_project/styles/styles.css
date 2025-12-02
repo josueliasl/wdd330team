@@ -108,7 +108,7 @@ footer {
     border-color: #2E8B57;
 }
 
-.chart-point{
+.chart-point {
     transition: r 0.3s ease, fill 0.3s ease;
 }
 
@@ -117,37 +117,42 @@ footer {
     fill: #1a5c38;
 }
 
-.currency-symbol, .currency-code{
+.currency-symbol,
+.currency-code {
     font-size: 1.2em;
     font-weight: bold;
 }
-.result{
+
+.result {
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
 }
 
-.result p{
+.result p {
     margin: 12px 0;
 }
 
-#mxn-result{
+#mxn-result {
     font-weight: bold;
 }
 
-.chart h3{
+.chart h3 {
     text-align: center;
     margin-top: 0;
-    color: var(--primary-color)}
+    color: var(--primary-color)
+}
 
-.chart-days{
+.chart-days {
     display: flex;
     justify-content: space-around;
     margin: 20px 0;
     border-radius: 6px;
 }
-
-.chart-container{
+.chart{
+    height: 100%;
+}
+.chart-container {
     height: 450px;
     display: flex;
     align-items: center;
