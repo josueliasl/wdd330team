@@ -150,10 +150,9 @@ footer {
 }
 
 .chart-container {
-    height: 450px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-style: italic;
-    margin-bottom: 5rem;
 }
